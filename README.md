@@ -3,7 +3,7 @@
 
 Podeu trobar les imatges docker al Dockerhub de [jordiiqb](https://hub.docker.com/u/jordiiqb/)
 
-Podeu trobar les imatges docker de classe al Dockehub de [edtasixm11](https://hub.docker.com/u/edtasixm11/)
+Podeu trobar les imatges docker de classe al Dockerhub de [edtasixm11](https://hub.docker.com/u/edtasixm11/)
 
 Podeu trobar la documentació del mòdul a [ASIX-M11](https://sites.google.com/site/asixm11edt/)
 
