@@ -1,44 +1,46 @@
 # Kerberos
-## @edt ASIX M11-SAD Curs 2018-2019
+## @edt ASIX M11-SAD Curs 2019-2020
 
-Podeu trobar les imatges docker al Dockehub de [edtasixm11](https://hub.docker.com/u/edtasixm11/)
+Podeu trobar les imatges docker al Dockerhub de [jordiiqb](https://hub.docker.com/u/jordiiqb/)
+
+Podeu trobar les imatges docker de classe al Dockehub de [edtasixm11](https://hub.docker.com/u/edtasixm11/)
 
 Podeu trobar la documentació del mòdul a [ASIX-M11](https://sites.google.com/site/asixm11edt/)
 
-ASIX M06-ASO Escola del treball de barcelona
+ASIX M11-ASO Escola del Treball de Barcelona
 
 
 ### Authenticació
 
-**edtasixm11/k19:kserver** servidor kerberos detach. Crea els usuaris pere
+**jordiiqb/k19:kserver** servidor kerberos detach. Crea els usuaris pere
   pau (admin), jordi, anna, marta, marta/admin i julia.
   Assignar-li el nom de host: *kserver.edt.org*
 
-**edtasixm11/k19:khost** host client de kerberos. Simplement amb eines 
+**jordiiqb/k19:khost** host client de kerberos. Simplement amb eines 
   kinit, klist i kdestroy (no pam). El servidor al que contacta s'ha 
   de dir *kserver.edt.org*.
 
-**edtasixm11/k19:khostp** host amb PAM de  kerberos. El servidor al que contacta s'ha
+**jordiiqb/k19:khostp** host amb PAM de  kerberos. El servidor al que contacta s'ha
   de dir *kserver.edt.org*. Aquest host configura el *system-auth* de pam per usar el
   mòdul *pam_krb5.so*.
 
-**edtasixm11/k19:khostpl** (khost-pam-ldap) host amb PAM amb autenticació AP de  kerberos i IP de ldap.
+**jordiiqb/k19:khostpl** (khost-pam-ldap) host amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
 
 ### Servei SSH Kerberitzat
 
-**edtasixm11/k19:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet
+**jordiiqb/k19:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet
   l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El
   servidor s'ha de dir sshd.edt.org.
 
-**edtasixm11/k19:sshdpl** (sshd-pam-kerberos-ldap) Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
+**jordiiqb/k19:sshdpl** (sshd-pam-kerberos-ldap) Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig . 
   S'ha generat partint del host edtasixm11/k19:khostpl i dse li ha afegit la part del servidor sshd.
   Conté els fitxers per poder activar el mount del home samba, però no s'ha configurat.
 
-**edtasixm11/k19:sshdpls** (sshd-pam-kerberos-ldap-home-samba) Servidor SSH  amb PAM (kerberos+ldap)
+**jordiiqb/k19:sshdpls** (sshd-pam-kerberos-ldap-home-samba) Servidor SSH  amb PAM (kerberos+ldap)
   que munta els homes dels usuaris (dins del home) via samba.
 
 
@@ -47,17 +49,17 @@ ASIX M06-ASO Escola del treball de barcelona
 Execució bàsica:
 ```
 docker netweork create mynet
-docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
-docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k19:sshd
-docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostp
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d jordiiqb/k19:kserver
+docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d jordiiqb/k19:sshd
+docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it jordiiqb/k19:khostp
 ```
 
 Execució krb5+ldap:
 ```
 docker netweork create mynet
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:19group
-docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
-docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostpl
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d jordiiqb/ldapserver19:group
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d jordiiqb/k19:kserver
+docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it jordiiqb/k19:khostpl
 ```
 
 
