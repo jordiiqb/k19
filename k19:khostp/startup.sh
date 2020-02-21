@@ -6,5 +6,4 @@
 
 # Engeguem serveis
 
-/usr/sbin/krb5kdc && echo "krb5kdc OK" # Tickets
-/usr/sbin/kadmind -nofork && echo "kadmind OK" # Admin
+/bin/bash

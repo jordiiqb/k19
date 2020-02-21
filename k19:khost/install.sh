@@ -11,7 +11,4 @@ echo "pere|pere" | passwd pere --stdin
 
 cp /opt/docker/krb5.conf /etc/krb5.conf
 
-# Afegim la resolució de noms per al servidor a /etc/hosts
-
-cat /opt/docker/add_host.txt >> /etc/hosts
 
