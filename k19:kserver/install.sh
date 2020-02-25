@@ -13,17 +13,17 @@ cp /opt/docker/kdc.conf /var/kerberos/krb5kdc/kdc.conf
 
 # Creem les ACLs
 
-cat /opt/docker/add_acls.txt >> /var/kerberos/krb5kdc/kadm5.acl
+cp /opt/docker/add_acls.txt /var/kerberos/krb5kdc/kadm5.acl
 
 # Creem els principals de Kerberos
 
-kadmin.local -q "addprinc -pw kpere kpere"
-kadmin.local -q "addprinc -pw kanna kanna"
-kadmin.local -q "addprinc -pw kpau kpau"
-kadmin.local -q "addprinc -pw kjordi kjordi"
-kadmin.local -q "addprinc -pw kmarta kmarta"
+kadmin.local -q "addprinc -pw kpere pere"
+kadmin.local -q "addprinc -pw kanna anna"
+kadmin.local -q "addprinc -pw kpau pau"
+kadmin.local -q "addprinc -pw kjordi jordi"
+kadmin.local -q "addprinc -pw kmarta marta"
 kadmin.local -q "addprinc -pw kmarta marta/admin"
-kadmin.local -q "addprinc -pw kjulia kjulia"
+kadmin.local -q "addprinc -pw kjulia julia"
 kadmin.local -q "addprinc -pw superuser superuser"
 kadmin.local -q "addprinc -pw kuser01 kuser01"
 kadmin.local -q "addprinc -pw kuser02 kuser02"
