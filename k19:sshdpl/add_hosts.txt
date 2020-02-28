@@ -1,1 +1,1 @@
-10.200.243.204	kserver.edt.org kserver 
+10.200.243.204	kserver.edt.org kserver ldap.edt.org ldap 
