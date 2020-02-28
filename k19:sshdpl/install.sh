@@ -22,8 +22,7 @@ cp /opt/docker/nslcd.conf /etc/nslcd.conf
 cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
 cp /opt/docker/ldap.conf /etc/openldap/.
 cp /opt/docker/krb5.conf /etc/krb5.conf
-cp /opt/docker/sshd_config /etc/ssh/sshd_config
 
-# Generacio del fitxer krb5.keytab per la kerberitzacio
+# Generem la clau del servidor ssh
 
-kadmin -p superuser -w superuser -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
+/usr/bin/ssh-keygen -A
