@@ -6,6 +6,4 @@
 
 # Engeguem serveis
 
-/sbin/nscd 
-/sbin/nslcd
-/sbin/sshd -D
+/usr/sbin/httpd -DFOREGROUND

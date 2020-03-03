@@ -26,4 +26,4 @@ cp /opt/docker/sshd_config /etc/ssh/sshd_config
 
 # Generacio del fitxer krb5.keytab per la kerberitzacio
 
-bash gen_keytab.sh && echo "GENERACIO DEL KEYTAB OK"
+/usr/bin/kadmin -p superuser -w superuser -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org" && echo "GENERACIO DEL KEYTAB OK"

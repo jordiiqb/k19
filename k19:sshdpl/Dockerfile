@@ -8,6 +8,6 @@ LABEL description="SSH Kerberitzat 2019-2020"
 RUN dnf -y install procps passwd nmap vim tree authconfig pam_mount pam_krb5 nfs-utils nss-pam-ldapd openldap-clients krb5-workstation openssh-server openssh-clients
 RUN mkdir /opt/docker
 COPY * /opt/docker/
-RUN chmod +x /opt/docker/install.sh /opt/docker/startup.sh /opt/docker/auth.sh /opt/docker/gen_keytab.sh
+RUN chmod +x /opt/docker/install.sh /opt/docker/startup.sh /opt/docker/auth.sh
 WORKDIR /opt/docker
 CMD ["/opt/docker/startup.sh"]
